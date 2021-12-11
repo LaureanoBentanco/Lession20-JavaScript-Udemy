@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo del DOM HTML</title>
+</head>
+<body>
+    <header id="header" class = "header">
+
+        <h1 id= "titulo" class = "colorTitulo">Practica</h1>
+
+        <nav id="nav" class = "navar">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Compras</a></li>
+                <li><a href="#">Ventas</a></li>
+                <li><a href="#">Clientes</a></li>
+        </nav>
+    </header>
+        <div class = "form1">
+            <h2>Mostrar Nombres</h2>
+            <form id ="formulario" class = "Form">
+                <input type="text" value="Marcos" placeholder = "Nombres" id = "nombre" >
+
+                <input type="text" value="Ramirez" placeholder="Apellido" id = "apellido">
+            </form>
+            <button onclick="MostrarValores()" class = "boton-mostrar">Mostrar</button>
+        </div>
+   
+    <div id= "Valores"></div>
+</body>
+
+<style>
+*{
+    padding:0px;
+    margin: 0px;
+}
+.header{
+        background-color: cadetblue; 
+}
+h1{
+        text-align:center;
+        color:rgb(13, 81, 83);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 30px;
+    
+}
+.navar{
+    text-align: center  ;
+}
+.navar li{
+    display: inline-flex;
+    list-style:none;
+}
+.navar li a{
+    text-decoration: none;
+    color: antiquewhite;
+    padding: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+.navar li a:hover{
+    background-color:rgb(13, 81, 83);
+    color:  rgb(209, 231, 231);
+}
+.form1{
+    padding-top: 10px;
+    margin: auto;
+    text-align: center;
+    width: 30%;
+}
+.Form{
+    background-color: darkcyan;
+    padding: 20px;
+    text-align: center;
+    margin: 0,auto;
+    height: 50%;
+}
+.Form input{
+    padding: 5px;
+    border:silver;
+    background-color:rgb(255, 255, 255);
+    
+}
+.form1 h2{
+    padding: 8px;
+    color: antiquewhite;
+    background-color: darkslategray;
+}
+.boton-mostrar{
+    width: 200px;
+    height: 30px;
+    margin: 10px;
+    background-color:rgb(25, 90, 25);
+    box-shadow: rgb(132, 219, 1);
+    border:0ch;
+    color: white;
+
+}
+
+</style>
+<script>
+
+let titulo = document.getElementById('titulo');
+
+console.log(`${titulo.innerHTML}`);
+titulo.innerHTML = "Practica javaScript";
+
+ let parrafos = document.getElementsByTagName('p');
+    
+ for(let i = 0; i < parrafos.length; i++ ){
+     console.log(`Estos Son Todos Los Parrafos: ${parrafos[i].innerHTML}`);
+}
+function MostrarValores(){
+
+let formulario = document.getElementById('formulario');
+let text = "";
+for(elemento of formulario){
+    text += elemento.value;
+}
+document.getElementById('Valores').innerHTML = text;
+}
+document.getElementById('nombre').addEventListener('focus', cambiar)
+document.getElementById('apellido').addEventListener('focus', cambiar)
+document.getElementById('nombre').addEventListener('blur', regresar)
+document.getElementById('apellido').addEventListener('blur', regresar)
+function cambiar(evento){
+
+    let componente = evento.target;
+    componente.style.background = 'blue'
+    componente.style.color = '#fff';
+}
+
+function regresar (evento){
+  evento.target.style.background = '#fff';
+  evento.target.style.color = "#000";
+}
+
+</script>
+</html>
